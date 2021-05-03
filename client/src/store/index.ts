@@ -1,7 +1,10 @@
 import { combineReducers, configureStore, Middleware } from '@reduxjs/toolkit';
 import thunk, { ThunkMiddleware } from 'redux-thunk';
+import uploadReducer from '../reducers/uploadFileReducer/index';
 
-const rootReducer = combineReducers({});
+const rootReducer = combineReducers({
+	upload: uploadReducer,
+});
 
 export const middleware: ThunkMiddleware[] | Middleware[] = [thunk];
 
