@@ -1,7 +1,7 @@
 import { FileProgressType } from '../../reducers/uploadFileReducer/type';
 
 type UploadProgressPropsType = {
-	fileProgress: FileProgressType;
+	fileProgress: FileProgressType[];
 };
 
 export type { UploadProgressPropsType };
