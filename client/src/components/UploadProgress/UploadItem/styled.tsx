@@ -21,7 +21,7 @@ const LeftSide = styled.div`
 	}
 `;
 
-const progressBar = styled.div`
+const ProgressBar = styled.div`
 	width: 100%;
 	height: 15px;
 	background-color: lightgray;
@@ -35,4 +35,8 @@ const progressBar = styled.div`
 	}
 `;
 
-export { WrapperItem, LeftSide };
+const Percentage = styled.span`
+	margin-left: 12px;
+`;
+
+export { WrapperItem, LeftSide, ProgressBar, Percentage };
