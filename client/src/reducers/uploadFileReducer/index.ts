@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { initUploadState } from './init';
-import { UPLOAD } from './type';
+import { FileProgressType, UPLOAD } from './type';
 
 interface UploadProgress {
 	id: string;
@@ -14,12 +14,15 @@ export const uploadReducer = createSlice({
 		init(state) {
 			return { ...state, ...initUploadState };
 		},
-		setUploadFile(state, action: PayloadAction<File[]>) {
-			const mappedData = action.payload.map((el) => ({
-				file: el,
-				progress: 0,
-				status: 0,
-			}));
+		setUploadFile(state, action: PayloadAction<FileList>) {
+			const mappedData: FileProgressType[] = [];
+			Array.from(action.payload).forEach((file) =>
+				mappedData.push({
+					file: file,
+					progress: 0,
+					status: 0,
+				})
+			);
 			const appendedData = [...state.data.fileProgress, ...mappedData];
 			state.data.fileProgress = appendedData;
 		},
