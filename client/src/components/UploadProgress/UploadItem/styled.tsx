@@ -12,6 +12,13 @@ const LeftSide = styled.div`
 	flex-direction: column;
 	align-items: flex-start;
 	margin-right: 8px;
+
+	label {
+		width: 100%;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		text-align: left;
+	}
 `;
 
 const progressBar = styled.div`
