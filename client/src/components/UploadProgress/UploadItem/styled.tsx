@@ -7,4 +7,11 @@ const WrapperItem = styled.div`
 	box-shadow: 0px 1px 2px lightgray;
 `;
 
-export { WrapperItem };
+const LeftSide = styled.div`
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	margin-right: 8px;
+`;
+
+export { WrapperItem, LeftSide };
