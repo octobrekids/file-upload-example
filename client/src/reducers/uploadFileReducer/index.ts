@@ -15,7 +15,7 @@ export const uploadReducer = createSlice({
 			const mappedData: FileProgressType[] = [];
 			Array.from(action.payload).forEach((file, index) =>
 				mappedData.push({
-					id: index.toString(),
+					id: index,
 					file: file,
 					progress: 0,
 					status: 0,
@@ -26,8 +26,12 @@ export const uploadReducer = createSlice({
 		},
 		setUploadProgress(
 			state,
-			action: PayloadAction<{ id: string; progress: number }>
-		) {},
+			action: PayloadAction<{ id: number; progress: number }>
+		) {
+			const { id, progress } = action.payload;
+			const file = state.data.fileProgress.find((el) => el.id === id);
+			if (file) state.data.fileProgress[file.id].progress = progress;
+		},
 	},
 	extraReducers: (builder) => {
 		builder.addCase(uploadFile.rejected, (state) => {
