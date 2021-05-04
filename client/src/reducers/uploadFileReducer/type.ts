@@ -3,6 +3,7 @@ import { ErrorState } from '../../types/error';
 export const UPLOAD = 'UPLOAD';
 
 type FileProgressType = {
+	id: string;
 	file: File;
 	progress: number;
 	status: number;

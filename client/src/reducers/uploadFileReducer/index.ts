@@ -13,8 +13,9 @@ export const uploadReducer = createSlice({
 		},
 		setUploadFile(state, action: PayloadAction<FileList>) {
 			const mappedData: FileProgressType[] = [];
-			Array.from(action.payload).forEach((file) =>
+			Array.from(action.payload).forEach((file, index) =>
 				mappedData.push({
+					id: index.toString(),
 					file: file,
 					progress: 0,
 					status: 0,
@@ -23,6 +24,10 @@ export const uploadReducer = createSlice({
 			const appendedData = [...state.data.fileProgress, ...mappedData];
 			state.data.fileProgress = appendedData;
 		},
+		setUploadProgress(
+			state,
+			action: PayloadAction<{ id: string; progress: number }>
+		) {},
 	},
 	extraReducers: (builder) => {
 		builder.addCase(uploadFile.rejected, (state) => {
@@ -39,9 +44,6 @@ export const uploadReducer = createSlice({
 		builder.addCase(uploadFile.fulfilled, (state, action) => {
 			state.ready = true;
 			state.error = undefined;
-			// TODO: remove hardcoded
-			state.owner = '1234';
-			state.data.fileProgress = action.payload.data;
 		});
 	},
 });
